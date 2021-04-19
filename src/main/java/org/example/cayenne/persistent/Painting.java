@@ -1,8 +1,8 @@
 package org.example.cayenne.persistent;
 
-import org.example.cayenne.persistent.auto._Paiting;
+import org.example.cayenne.persistent.auto._Painting;
 
-public class Paiting extends _Paiting {
+public class Painting extends _Painting {
 
     private static final long serialVersionUID = 1L;
 
