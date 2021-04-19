@@ -1,8 +1,8 @@
 package org.example.cayenne.persistent;
 
-import org.example.cayenne.persistent.auto._Galary;
+import org.example.cayenne.persistent.auto._Gallary;
 
-public class Galary extends _Galary {
+public class Gallary extends _Gallary {
 
     private static final long serialVersionUID = 1L;
 

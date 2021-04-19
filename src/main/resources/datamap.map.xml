@@ -4,6 +4,7 @@
 	 xsi:schemaLocation="http://cayenne.apache.org/schema/10/modelMap https://cayenne.apache.org/schema/10/modelMap.xsd"
 	 project-version="10">
 	<property name="defaultPackage" value="org.example.cayenne.persistent."/>
+	<procedure name="procedure"/>
 	<db-entity name="ARTIST">
 		<db-attribute name="DATE_OF_BIRTH_DATE" type="DATE"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
@@ -13,36 +14,50 @@
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="NAME" type="VARCHAR" length="200"/>
 	</db-entity>
-	<db-entity name="PAITING">
+	<db-entity name="PAINTING">
 		<db-attribute name="ARTIST_ID" type="INTEGER"/>
 		<db-attribute name="GALLERY_ID" type="INTEGER"/>
 		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="NAME" type="VARCHAR" length="200"/>
 	</db-entity>
+	<db-entity name="db_entity"/>
 	<obj-entity name="Artist" className="org.example.cayenne.persistent.Artist" dbEntityName="ARTIST">
 		<obj-attribute name="dateOfBirthDate" type="java.time.LocalDate" db-attribute-path="DATE_OF_BIRTH_DATE"/>
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<obj-entity name="Galary" className="org.example.cayenne.persistent.Galary" dbEntityName="GALARY">
+	<obj-entity name="Gallary" className="org.example.cayenne.persistent.Gallary" dbEntityName="GALARY">
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<obj-entity name="Paiting" className="org.example.cayenne.persistent.Paiting" dbEntityName="PAITING">
+	<obj-entity name="Painting" className="org.example.cayenne.persistent.Painting" dbEntityName="PAINTING">
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<db-relationship name="paitings" source="ARTIST" target="PAITING" toMany="true">
+	<db-relationship name="paintings" source="ARTIST" target="PAINTING" toMany="true">
 		<db-attribute-pair source="ID" target="ARTIST_ID"/>
 	</db-relationship>
-	<db-relationship name="paitings" source="GALARY" target="PAITING" toMany="true">
+	<db-relationship name="paintings" source="GALARY" target="PAINTING" toMany="true">
 		<db-attribute-pair source="ID" target="GALLERY_ID"/>
 	</db-relationship>
-	<db-relationship name="artist" source="PAITING" target="ARTIST">
+	<db-relationship name="artist" source="PAINTING" target="ARTIST">
 		<db-attribute-pair source="ARTIST_ID" target="ID"/>
 	</db-relationship>
-	<db-relationship name="galary" source="PAITING" target="GALARY">
+	<db-relationship name="gallary" source="PAINTING" target="GALARY">
 		<db-attribute-pair source="GALLERY_ID" target="ID"/>
 	</db-relationship>
-	<obj-relationship name="paitings" source="Artist" target="Paiting" deleteRule="Deny" db-relationship-path="paitings"/>
-	<obj-relationship name="paitings" source="Galary" target="Paiting" deleteRule="Deny" db-relationship-path="paitings"/>
-	<obj-relationship name="artist" source="Paiting" target="Artist" deleteRule="Nullify" db-relationship-path="artist"/>
-	<obj-relationship name="galary" source="Paiting" target="Galary" deleteRule="Nullify" db-relationship-path="galary"/>
+	<obj-relationship name="paintings" source="Artist" target="Painting" deleteRule="Deny" db-relationship-path="paintings"/>
+	<obj-relationship name="paintings" source="Gallary" target="Painting" deleteRule="Deny" db-relationship-path="paintings"/>
+	<obj-relationship name="artist" source="Painting" target="Artist" deleteRule="Nullify" db-relationship-path="artist"/>
+	<obj-relationship name="gallary" source="Painting" target="Gallary" deleteRule="Nullify" db-relationship-path="gallary"/>
+	<dbImport xmlns="http://cayenne.apache.org/schema/10/dbimport">
+		<tableTypes>
+			<tableType>TABLE</tableType>
+			<tableType>VIEW</tableType>
+		</tableTypes>
+		<forceDataMapCatalog>false</forceDataMapCatalog>
+		<forceDataMapSchema>false</forceDataMapSchema>
+		<namingStrategy>org.apache.cayenne.dbsync.naming.DefaultObjectNameGenerator</namingStrategy>
+		<skipPrimaryKeyLoading>false</skipPrimaryKeyLoading>
+		<skipRelationshipsLoading>false</skipRelationshipsLoading>
+		<useJava7Types>false</useJava7Types>
+		<usePrimitives>true</usePrimitives>
+	</dbImport>
 </data-map>

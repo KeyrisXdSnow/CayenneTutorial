@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Apr 19 17:05:06 MSK 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0178-ea72-f8ba-00000f713600 
+on database directory memory:/Users/kristinatrukhan/IdeaProjects/tutorial/testdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2c13da15 
+Loaded from file:/Users/kristinatrukhan/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=AdoptOpenJDK
+java.runtime.version=11.0.10+9
+user.dir=/Users/kristinatrukhan/IdeaProjects/tutorial
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.15.7
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
