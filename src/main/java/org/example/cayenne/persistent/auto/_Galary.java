@@ -9,6 +9,7 @@ import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.property.ListProperty;
 import org.apache.cayenne.exp.property.PropertyFactory;
 import org.apache.cayenne.exp.property.StringProperty;
+
 import org.example.cayenne.persistent.Paiting;
 
 /**
