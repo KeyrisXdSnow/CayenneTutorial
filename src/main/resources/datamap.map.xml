@@ -4,4 +4,31 @@
 	 xsi:schemaLocation="http://cayenne.apache.org/schema/10/modelMap https://cayenne.apache.org/schema/10/modelMap.xsd"
 	 project-version="10">
 	<property name="defaultPackage" value="org.example.cayenne.persistent."/>
+	<db-entity name="ARTIST">
+		<db-attribute name="DATE_OF_BIRTH_DATE" type="DATE"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="200"/>
+	</db-entity>
+	<db-entity name="GALARY">
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="200"/>
+	</db-entity>
+	<db-entity name="PAITING">
+		<db-attribute name="ARTIST_ID" type="INTEGER"/>
+		<db-attribute name="GALLERY_ID" type="INTEGER"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="200"/>
+	</db-entity>
+	<db-relationship name="paitings" source="ARTIST" target="PAITING" toMany="true">
+		<db-attribute-pair source="ID" target="ARTIST_ID"/>
+	</db-relationship>
+	<db-relationship name="paitings" source="GALARY" target="PAITING" toMany="true">
+		<db-attribute-pair source="ID" target="GALLERY_ID"/>
+	</db-relationship>
+	<db-relationship name="artist" source="PAITING" target="ARTIST">
+		<db-attribute-pair source="ARTIST_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="galary" source="PAITING" target="GALARY">
+		<db-attribute-pair source="GALLERY_ID" target="ID"/>
+	</db-relationship>
 </data-map>
